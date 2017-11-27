@@ -5,7 +5,7 @@ $(function() {
     var newEaten = $(this).data("newEaten");
 
     var newBurger = {
-      devoured: false
+      devoured: 0
     };
 
     // Send the PUT request.
@@ -21,7 +21,7 @@ $(function() {
     );
   });
 
-  $(".create-form").on("submit", function(event) {
+  $(".griller").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -47,10 +47,10 @@ $(function() {
 
     // Send the DELETE request.
     $.ajax("/api/burgers/" + id, {
-      type: "updadte",
+      type: "PUT",
     }).then(
       function() {
-        console.log("deleted cat", id);
+        console.log("This burger has been vanquised", id);
         // Reload the page to get the updated list
         location.reload();
       }
